@@ -58,7 +58,7 @@ public class GerenciarUsuarioMB {
 	}
 	public String limpa() {
 		usuario = new Usuario();
-		return "/public/usuario/lista.jsf?facesRedirect=true";
+		return "/public/usuario.jsf?facesRedirect=true";
 	}
 
 }

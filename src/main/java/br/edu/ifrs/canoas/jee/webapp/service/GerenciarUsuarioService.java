@@ -29,6 +29,13 @@ public class GerenciarUsuarioService {
 	public boolean salvaUsario(Usuario usuario) {
 
 		log.info("Salvando " + usuario.getNome());
+		
+		if (usuario.getId() != null) {
+			usuarioDAO.atualiza(usuario);
+			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
+			return true;
+		}
+		
 		int qtdEmailCadastrado = this.validaEmail(usuario);
 		
 		if (qtdEmailCadastrado == 0) {

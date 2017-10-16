@@ -17,13 +17,13 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 
 	private static final long serialVersionUID = 6262524988798723388L;
 
-	//@NotNull @Email 
+	@NotNull @Email 
 	private String email;
 	
-	//@NotNull
+	@NotNull
 	private String senha;
 	
-	//@NotNull
+	@NotNull
 	private String nome;
 	
 	private String sobrenome;
