@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="/WEB-INF/templates/default.xhtml">
+
+
+    <ui:define name="content">
+        <h1>Welcome to WildFly!</h1>
+
+        <div>
+            <p>You have successfully deployed a Java EE 7 Enterprise
+                Application.</p>
+            <h3>Your application can run on:</h3>
+            <img src="resources/gfx/wildfly_400x130.jpg" />
+        </div>
+
+        <h:form id="reg">
+            <h2>Member Registration</h2>
+            <p>Enforces annotation-based constraints defined on the
+                model class.</p>
+            <h:panelGrid columns="3" columnClasses="titleCell">
+                <h:outputLabel for="name" value="Nome:" />
+                <h:inputText id="name" value="#{gerenciarUsuarioMB.usuario.nome}" />
+                <h:message for="name" errorClass="invalid" />
+
+				<h:outputLabel for="senha" value="Senha:" />
+                <h:inputText id="senha" value="#{gerenciarUsuarioMB.usuario.senha}" />
+                <h:message for="senha" errorClass="invalid" />
+
+
+                <h:outputLabel for="email" value="Email:" />
+                <h:inputText id="email" value="#{gerenciarUsuarioMB.usuario.email}" />
+                <h:message for="email" errorClass="invalid" />
+
+                <h:outputLabel for="phoneNumber" value="Telefone #:" />
+                <h:inputText id="phoneNumber"
+                    value="#{gerenciarUsuarioMB.usuario.telefone}" />
+                <h:message for="phoneNumber" errorClass="invalid" />
+            </h:panelGrid>
+
+            <p>
+                <h:panelGrid columns="2">
+                    <h:commandButton id="register"
+                        action="#{gerenciarUsuarioMB.salva}"
+                        value="Salvar" styleClass="register" />
+                    <h:messages styleClass="messages"
+                        errorClass="invalid" infoClass="valid"
+                        warnClass="warning" globalOnly="true" />
+                </h:panelGrid>
+            </p>
+        </h:form>
+        <h2>Members</h2>
+        <h:panelGroup rendered="#{empty gerenciarUsuarioMB.usuarios}">
+            <em>No registered members.</em>
+        </h:panelGroup>
+        <h:dataTable var="_usuario" value="#{gerenciarUsuarioMB.usuarios}"
+            rendered="#{not empty gerenciarUsuarioMB.usuarios}"
+            styleClass="simpletablestyle">
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{_usuario.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                #{_usuario.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{_usuario.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Telefone #</f:facet>
+                #{_usuario.telefone}
+            </h:column>
+             <h:column>
+                <f:facet name="header">REST URL</f:facet>
+                <a
+                    href="#{request.contextPath}/rest/members/#{_member.id}">/rest/members/#{_member.id}</a>
+            </h:column>
+            <f:facet name="footer">
+            REST URL for all members: <a
+                    href="#{request.contextPath}/rest/members">/rest/members</a>
+            </f:facet>
+            
+        </h:dataTable>
+    </ui:define>
+</ui:composition>
