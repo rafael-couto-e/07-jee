@@ -1,7 +1,7 @@
 # Aplicação JEE
 Este é um projeto Web simples obtido a partir do JBoss Tools para auxiliar a rápida criação de projetos JEE usando JBoss Enterprise Application Platform 6, JBoss Application Server 7.1 ou Wildfly 8.0+.  
 
-Este projeto permite a criaço de aplicações em conformidade com o especificaço JEE e utiliza as seguintes tecnologias/frameworks:
+Este projeto permite a criação de aplicações em conformidade com o especificação JEE e utiliza as seguintes tecnologias/frameworks:
  - [Apache Maven](https://maven.apache.org/)
  - [JSF: Java Server Faces](http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html)
  - [CDI: Contexts and Dependency Injection](http://docs.oracle.com/javaee/6/tutorial/doc/giwhl.html)
