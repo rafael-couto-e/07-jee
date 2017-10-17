@@ -6,8 +6,10 @@ Este projeto permite a criaço de aplicações em conformidade com o especifica�
  - JSF: Java Server Faces
  - CDI: Contexts and Dependency Injection
  - EJB: Enterprise Java Beans
+ - JPA: Java Persistence API
+ - Hibernate em banco de dados H2
  - Bean Validation
- - Hibernate rodando no banco de dados H2
  - Primefaces
- - Arquillian
+ - Bootstrap Template: AdminLTE.IO
+ - Arquillian e AssertJ
  
