@@ -15,16 +15,6 @@ target/
 *.iml
 *.ipr
 
-### NetBeans ###
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-### JDeveloper template
-# default application storage directory used by the IDE Performance Cache feature
-.data/
 
 # used for ADF styles caching
 temp/
@@ -113,35 +103,6 @@ local.properties
 ### Example user template template
 ### Example user template
 
-# IntelliJ project files
-.idea
-*.iml
-out
-gen### VirtualEnv template
-# Virtualenv
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-.Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ll]ib64
-[Ll]ocal
-[Ss]cripts
-pyvenv.cfg
-.venv
-pip-selfcheck.json
-### NetBeans template
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-### Windows template
-# Windows thumbnail cache files
-Thumbs.db
-ehthumbs.db
-ehthumbs_vista.db
 
 # Folder config file
 Desktop.ini
