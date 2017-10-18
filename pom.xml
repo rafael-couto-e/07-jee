@@ -159,6 +159,18 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.6</version>
 		</dependency>
+		 <dependency>
+	        <groupId>org.wildfly</groupId>
+	        <artifactId>wildfly-embedded</artifactId>
+	        <version>8.1.0.CR1</version>
+	        <exclusions>
+	            <exclusion>
+	                <groupId>sun.jdk</groupId>
+	                <artifactId>jconsole</artifactId>
+	            </exclusion>
+	        </exclusions>
+	        <scope>test</scope>
+	    </dependency>
 
 	</dependencies>
 
