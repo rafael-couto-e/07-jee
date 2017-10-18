@@ -7,6 +7,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.edu.ifrs.canoas.jee.webapp.model.Endereco;
 import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.service.GerenciarUsuarioService;
 
@@ -58,6 +59,7 @@ public class GerenciarUsuarioMB {
 	}
 	public String limpa() {
 		usuario = new Usuario();
+		usuario.setEndereco(new Endereco());
 		return "/public/usuario.jsf?facesRedirect=true";
 	}
 

@@ -12,7 +12,9 @@ import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 
+import br.edu.ifrs.canoas.jee.webapp.data.EnderecoDAO;
 import br.edu.ifrs.canoas.jee.webapp.data.UsuarioDAO;
+import br.edu.ifrs.canoas.jee.webapp.model.Endereco;
 import br.edu.ifrs.canoas.jee.webapp.model.Usuario;
 import br.edu.ifrs.canoas.jee.webapp.util.Mensagens;
 
@@ -22,15 +24,17 @@ public class GerenciarUsuarioService {
 
 	@Inject
 	private UsuarioDAO usuarioDAO;
+	@Inject
+	private EnderecoDAO enderecoDAO;
 	
 	@Inject
 	private Logger log;
 
 	public boolean salvaUsario(Usuario usuario) {
-
 		log.info("Salvando " + usuario.getNome());
 		
 		if (usuario.getId() != null) {
+			enderecoDAO.atualiza(usuario.getEndereco());
 			usuarioDAO.atualiza(usuario);
 			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.atualizado.sucesso",usuario.getEmail());
 			return true;
@@ -40,7 +44,7 @@ public class GerenciarUsuarioService {
 		
 		if (qtdEmailCadastrado == 0) {
 			if (validaSenha(usuario)){
-				
+				enderecoDAO.insere(usuario.getEndereco());
 				usuarioDAO.insere(usuario);
 				Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.cadastro.sucesso",usuario.getEmail());
 				log.info("Salvo " + usuario.getNome() + " com id " + usuario.getId());
@@ -96,7 +100,7 @@ public class GerenciarUsuarioService {
 		try {
 			MessageDigest m = MessageDigest.getInstance("MD5");
 			m.update(str.getBytes(), 0, str.length());
-			result = new BigInteger(1, m.digest()).toString(16);
+			result = new BigInteger(1, m.digest()).toString(16).substring(0, 7);
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 			Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.senha.erro.criptografia", e.getMessage());
@@ -107,6 +111,7 @@ public class GerenciarUsuarioService {
 
 	public void exclui(Usuario usuario) {
 		usuarioDAO.exclui(usuario.getId());
+		enderecoDAO.exclui(usuario.getEndereco().getId());
 		Mensagens.define(FacesMessage.SEVERITY_INFO, "Usuario.excluido.sucesso",usuario.getNome());
 		log.info("Excluido " + usuario.getNome() + " com id " + usuario.getId());
 	}

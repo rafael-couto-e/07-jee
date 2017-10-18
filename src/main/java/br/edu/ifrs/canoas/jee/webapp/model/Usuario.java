@@ -2,8 +2,12 @@ package br.edu.ifrs.canoas.jee.webapp.model;
 
 import java.io.Serializable;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -20,7 +24,8 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	@NotNull @Email 
 	private String email;
 	
-	@NotNull
+	@NotNull @Length(min=6, max=8)
+	@Pattern(regexp="^[A-Za-z0-9]+$", message="A senha deve ter apenas letras e números")
 	private String senha;
 	
 	@NotNull
@@ -30,8 +35,15 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 	
 	private String telefone;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Endereco endereco;
+	
+	@PostConstruct
+	public void init(){
+		endereco = new Endereco();
+	}
+	
 	public Usuario() {
-		super();
 	}
 		
 	public String getEmail() {
@@ -73,4 +85,17 @@ public class Usuario extends BaseEntity<Long> implements Serializable {
 		this.telefone = telefone;
 	}
 	
+	public Endereco getEndereco(){
+		return endereco;
+	}
+	
+	public void setEndereco(Endereco endereco){
+		this.endereco = endereco;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [email=" + email + ", senha=" + senha + ", nome=" + nome + ", sobrenome=" + sobrenome
+				+ ", telefone=" + telefone + ", endereco=" + endereco + "]";
+	}
 }

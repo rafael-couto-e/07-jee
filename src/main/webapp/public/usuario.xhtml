@@ -83,6 +83,36 @@
 							</p:password>
 							<!-- <p:message for="senha" errorClass="invalid" /> -->
 						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="logradouro" value="Informe o logradouro:" />
+							<p:inputText id="logradouro" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.logradouro}" required="true" />
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="numero" value="Informe o número:" />
+							<p:inputText id="numero" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.numero}" required="false" />
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="cep" value="Informe o CEP:" />
+							<p:inputText id="cep" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.cep}" required="true" />
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="cidade" value="Informe a cidade:" />
+							<p:inputText id="cidade" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.cidade}" required="true" />
+						</div>
+						
+						<div class="form-group">
+							<p:outputLabel for="estado" value="Informe o estado:" />
+							<p:inputText id="estado" styleClass="form-control"
+								value="#{gerenciarUsuarioMB.usuario.endereco.estado}" required="true" />
+						</div>
 
 						<p:commandButton value="#{messages['clean']}" 
 						    action="#{gerenciarUsuarioMB.limpa}" styleClass="btn btn-default"
@@ -111,6 +141,9 @@
 							</p:column>
 							<p:column headerText="Email">
 								<h:outputText value="#{_usr.email}" />
+							</p:column>
+							<p:column headerText="Endereço">
+								<h:outputText value="#{_usr.endereco.endereco}" />
 							</p:column>
 
 							<p:column headerText="Ações">
